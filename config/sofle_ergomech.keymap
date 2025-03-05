@@ -11,21 +11,21 @@
 #include <dt-bindings/zmk/rgb.h>
 
 #define BASE 0
-#define LOWER 1
-#define RAISE 2
-#define ADJUST 3
+#define SYMBOLS 1
+#define NUMBERS 2
+#define EXTRAS 3
 
 / {
     // Activate ADJUST layer by pressing raise and lower
 
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
+    // conditional_layers {
+    //     compatible = "zmk,conditional-layers";
 
-        adjust_layer {
-            if-layers = <LOWER RAISE>;
-            then-layer = <ADJUST>;
-        };
-    };
+    //     adjust_layer {
+    //         if-layers = <LOWER RAISE>;
+    //         then-layer = <ADJUST>;
+    //     };
+    // };
 
     keymap {
         compatible = "zmk,keymap";
@@ -41,19 +41,19 @@
             //               | GUI | ALT  | CTRL | LOWER|  ENTER |  | SPACE | RAISE| CTRL  | ALT   | GUI  |
 
             bindings = <
-&kp GRAVE   &kp N1    &kp N2    &kp N3     &kp N4     &kp N5   &kp N6     &kp N7     &kp N8        &kp N9    &kp N0    &none
-&kp ESC     &kp Q     &kp W     &kp E      &kp R      &kp T    &kp Y      &kp U      &kp I         &kp O     &kp P     &kp BSPC
-&kp TAB     &kp A     &kp S     &kp D      &kp F      &kp G    &kp H      &kp J      &kp K         &kp L     &kp SEMI  &kp SQT
-&kp LSHFT   &kp Z     &kp X     &kp C      &kp V      &kp B    &kp N      &kp M      &kp COMMA     &kp DOT   &kp FSLH  &kp RSHFT
-&kp C_MUTE  &kp LGUI  &kp LALT  &kp LCTRL  &mo LOWER  &kp RET  &kp SPACE  &mo RAISE  &kp RCTRL     &kp RALT  &kp RGUI
-                                                               &kp ENTER  &kp RIGHT  &kp UP_ARROW  &kp LEFT  &kp DOWN
+&kp GRAVE             &kp N1      &kp N2    &kp N3        &kp N4          &kp N5            &kp N6          &kp N7     &kp N8        &kp N9    &kp N0         &to NUMBERS
+&kp TAB               &kp Q       &kp W     &kp E         &kp R           &kp T             &kp Y           &kp U      &kp I         &kp O     &kp P          &kp BSPC
+&mt LCTRL ESC         &kp A       &kp S     &kp D         &kp F           &kp G             &kp H           &kp J      &kp K         &kp L     &kp LS(SEMI)   &kp SQT
+&kp LG(LA(S))         &kp Z       &kp X     &kp C         &kp V           &kp B             &kp N           &kp M      &kp COMMA     &kp DOT   &kp FSLH       &kp LG(LA(K))
+&kp F10               &kp LCTRL   &kp LGUI  &mo NUMBERS   &mt LSHFT DELETE   &lt SYMBOLS RET                   &mt LGUI ENTER  &kp SPACE  &kp RSHFT     &kp RALT  &kp RCTRL
+                                                               &kp LG(V)  &kp RIGHT  &kp UP_ARROW  &kp LEFT  &kp DOWN
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_DN &inc_dec_kp PG_UP PG_UP>;
+            sensor-bindings = <&inc_dec_kp F11 F12>;
         };
 
-        lower_layer {
-            label = "lower";
+        symbols_layer {
+            label = "symbols";
 
             // TODO: Some binds are waiting for shifted keycode support.
             // ------------------------------------------------------------------------------------------------------------
@@ -64,19 +64,19 @@
             //               |     |      |      |      |        |  |       |      |       |       |      |
 
             bindings = <
-&studio_unlock     &kp F1     &kp F2     &kp F3    &kp F4    &kp F5     &kp F6     &kp F7    &kp F8     &kp F9     &kp F10   &kp F11
-&kp GRAVE  &kp N1     &kp N2     &kp N3    &kp N4    &kp N5     &kp N6     &kp N7    &kp N8     &kp N9     &kp N0    &kp F12
-&trans     &kp EXCL   &kp AT     &kp HASH  &kp DLLR  &kp PRCNT  &kp CARET  &kp AMPS  &kp ASTRK  &kp LPAR   &kp RPAR  &kp PIPE
-&trans     &kp EQUAL  &kp MINUS  &kp PLUS  &kp LBRC  &kp RBRC   &kp LBKT   &kp RBKT  &kp SEMI   &kp COLON  &kp BSLH  &trans
-&trans     &trans     &trans     &trans    &trans    &trans     &trans     &trans    &trans     &trans     &trans
-                                                                &kp A      &kp B     &kp C      &kp D      &kp E
+&studio_unlock     &bt BT_SEL 0     &bt BT_SEL 1     &none &none &none      &none      &none &none &none &none    &none
+&kp GRAVE  &kp LESS_THAN     &kp GREATER_THAN     &kp DOLLAR    &kp AMPERSAND     &kp PERCENT     &kp MINUS               &kp LEFT_BRACE        &kp RIGHT_BRACE         &none       &kp PLUS    &none
+&trans     &kp EXCLAMATION   &kp AT_SIGN          &kp HASH      &kp LA(DELETE)    &kp ASTERISK    &kp EQUAL               &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS   &kp PIPE    &kp SEMI    &kp BACKSLASH
+&trans     &none              &none               &kp CARET     &kp QUESTION      &none           &kp UNDERSCORE          &kp LEFT_BRACKET      &kp RIGHT_BRACKET       &none       &none       &trans
+&none      &trans     &trans     &trans    &trans    &trans                       &trans          &kp LG(LEFT_BRACKET)    &kp LG(LEFT_BRACKET)  &trans                  &trans
+                                                               &kp LG(C)  &kp RIGHT  &kp UP_ARROW  &kp LEFT  &kp DOWN
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+            sensor-bindings = <&inc_dec_kp PG_UP PG_DN>;
         };
 
-        raise_layer {
-            label = "raise";
+        numbers_layer {
+            label = "numbers";
 
             // ------------------------------------------------------------------------------------------------------------
             // | BTCLR | BT1  | BT2  |  BT3  |  BT4  |  BT5 |                |      |      |       |      |       |       |
@@ -86,18 +86,18 @@
             //                |      |       |       |      |      |  |      |      |      |       |      |
 
             bindings = <
-&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &trans     &trans    &trans    &trans     &trans   &trans
-&trans      &kp INS       &kp PSCRN     &kp K_CMENU   &trans        &trans        &kp PG_UP  &trans    &kp UP    &trans     &kp N0   &trans
-&trans      &kp LALT      &kp LCTRL     &kp LSHFT     &trans        &kp CLCK      &kp PG_DN  &kp LEFT  &kp DOWN  &kp RIGHT  &kp DEL  &kp BSPC
-&trans      &kp K_UNDO    &kp K_CUT     &kp K_COPY    &kp K_PASTE   &trans        &trans     &trans    &trans    &trans     &trans   &trans
-&trans      &trans        &trans        &trans        &trans        &trans        &trans     &trans    &trans    &trans     &trans
-                                                                                  &kp A      &kp B     &kp C     &kp D      &kp E
+&none &none &none 1  &none &none &none &none     &none    &none    &none     &none   &to BASE
+&kp F1      &kp F2       &kp F3     &kp F4        &kp F5        &kp F6  &kp F7    &kp F8    &kp F9     &kp F10   &kp F11 &kp F12
+&trans      &kp N1      &kp N2     &kp N3     &kp N4        &kp N5      &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &kp EQUAL
+&trans      &trans      &trans      &kp LG(LEFT_BRACKET)    &kp LG(RIGHT_BRACKET)   &trans        &trans     &kp LG(LS(LEFT_BRACKET))    &kp LG(LS(RIGHT_BRACKET))   &trans     &trans   &trans
+&none       &trans        &trans        &trans        &trans        &trans        &trans     &trans    &trans    &trans     &trans
+                                                               &kp LG(C)  &kp RIGHT  &kp UP_ARROW  &kp LEFT  &kp DOWN
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+            sensor-bindings = <&inc_dec_kp F1 F2>;
         };
 
-        adjust_layer {
+        extras_layer {
             // ----------------------------------------------------------------------------------------------------------------------------
             // | BTCLR  |  BT1    |  BT2    |   BT3   |   BT4   |   BT5   |                  |      |      |       |      |       |       |
             // | EXTPWR | RGB_HUD | RGB_HUI | RGB_SAD | RGB_SAI | RGB_EFF |                  |      |      |       |      |       |       |
@@ -105,14 +105,14 @@
             // |        |         |         |         |         |         | RGB_TOG | |      |      |      |       |      |       |       |
             //                    |         |         |         |         |         | |      |      |      |       |      |
 
-            label = "adjust";
+            label = "extras";
             bindings = <
-&bt BT_CLR         &bt BT_SEL 0     &bt BT_SEL 1     &bt BT_SEL 2     &bt BT_SEL 3     &bt BT_SEL 4     &none  &none  &none  &none  &none  &none
-&ext_power EP_TOG  &rgb_ug RGB_HUD  &rgb_ug RGB_HUI  &rgb_ug RGB_SAD  &rgb_ug RGB_SAI  &rgb_ug RGB_EFF  &none  &none  &none  &none  &none  &none
-&none              &rgb_ug RGB_BRD  &rgb_ug RGB_BRI  &none            &none            &none            &none  &none  &none  &none  &none  &none
-&none              &none            &none            &none            &none            &none            &none  &none  &none  &none  &none  &none
-&rgb_ug RGB_TOG    &none            &none            &none            &none            &none            &none  &none  &none  &none  &none
-                                                                                                        &kp A  &kp B  &kp C  &kp D  &kp E
+&none &none &none &none &none &none &none  &none  &none  &none  &none  &none
+&none &none &none &none &none &none &none  &none  &none  &none  &none  &none
+&none &none &none &none &none &none &none  &none  &none  &none  &none  &none
+&none &none &none &none &none &none &none  &none  &none  &none  &none  &none
+&none &none &none &none &none &none &none  &none  &none  &none  &none
+                                                                                                        &kp ENTER  &kp RIGHT_ARROW  &kp UP_ARROW  &kp LEFT_ARROW  &kp DOWN_ARROW
             >;
         };
     };
