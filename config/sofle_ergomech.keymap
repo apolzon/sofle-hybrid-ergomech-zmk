@@ -88,7 +88,7 @@
                                                                &kp LG(V)  &kp RIGHT  &kp UP_ARROW  &kp LEFT  &kp DOWN
             >;
 
-            sensor-bindings = <&inc_dec_kp &msc SCRL_DOWN 20, &msc SCRL_UP 20>;
+            sensor-bindings = <&inc_dec_kp &msc SCRL_DOWN(20), &msc SCRL_UP(20)>;
         };
 
         coding_layer {
