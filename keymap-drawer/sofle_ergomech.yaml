@@ -23,7 +23,7 @@ layers:
   - I
   - O
   - P
-  - BSPC
+  - {t: coding, h: toggle}
   - {t: ESC, h: LCTRL}
   - A
   - S
@@ -65,7 +65,7 @@ layers:
   - LEFT
   - DOWN
   coding:
-  - BT CLR
+  - {t: ▽, type: trans}
   - {t: BT, h: '0'}
   - {t: BT, h: '1'}
   - ''
@@ -88,7 +88,7 @@ layers:
   - '}'
   - ''
   - +
-  - ''
+  - {t: default, h: toggle}
   - {t: ▽, type: trans}
   - '!'
   - '@'
@@ -113,16 +113,16 @@ layers:
   - ''
   - ''
   - {t: ▽, type: trans}
-  - ''
+  - F10
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {type: held}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - Gui+[
-  - Gui+]
-  - {t: default, h: toggle}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - Gui+C
   - RIGHT
@@ -178,7 +178,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - ''
+  - F10
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {type: held}
@@ -195,4 +195,4 @@ layers:
   - LEFT
   - DOWN
   extras: ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '',
-    '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ENTER, RIGHT ARROW, UP ARROW, LEFT ARROW, DOWN ARROW]
+    '', '', '', '', '', '', '', '', '', '', F10, '', '', '', '', '', '', '', '', '', '', ENTER, RIGHT ARROW, UP ARROW, LEFT ARROW, DOWN ARROW]
