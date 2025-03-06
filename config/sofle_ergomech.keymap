@@ -71,7 +71,7 @@
         compatible = "zmk,behavior-input-two-axis";
         #sensor-binding-cells = <0>;
         tap-ms = <20>;
-        bindings = <&msc SCRL_DOWN(140)>, <&msc SCRL_UP(140)>;
+        bindings = <&msc SCRL_DOWN 140>, <&msc SCRL_UP 140>;
       };
     };
 
