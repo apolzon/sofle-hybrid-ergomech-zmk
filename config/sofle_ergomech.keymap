@@ -11,7 +11,7 @@
 #include <dt-bindings/zmk/rgb.h>
 
 #define BASE 0
-#define SYMBOLS 1
+#define CODING 1
 #define NUMBERS 2
 #define EXTRAS 3
 
@@ -27,11 +27,32 @@
     //     };
     // };
 
+    // see https://zmk.dev/docs/keymaps/behaviors/hold-tap
+    behaviors {
+      tapm: homerow_mods {
+        compatible = "zmk,behavior-hold-tap";
+        #binding-cells = <2>;
+        tapping-term-ms = <150>;
+        quick-tap-ms = <0>;
+        flavor = "tap-preferred";
+        bindings = <&kp>, <&kp>;
+      };
+
+      balm: balanced_homerow_mods {
+        compatible = "zmk,behavior-hold-tap";
+        #binding-cells = <2>;
+        tapping-term-ms = <200>;    // <---[[moderate duration]]
+        quick-tap-ms = <0>;
+        flavor = "balanced";
+        bindings = <&kp>, <&kp>;
+      };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
-            label = "default";
+            display-name = "default";
 
             // ------------------------------------------------------------------------------------------------------------
             // |   `   |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   |       |
@@ -41,19 +62,19 @@
             //               | GUI | ALT  | CTRL | LOWER|  ENTER |  | SPACE | RAISE| CTRL  | ALT   | GUI  |
 
             bindings = <
-&kp GRAVE             &kp N1      &kp N2    &kp N3        &kp N4          &kp N5            &kp N6          &kp N7     &kp N8        &kp N9    &kp N0         &to NUMBERS
-&kp TAB               &kp Q       &kp W     &kp E         &kp R           &kp T             &kp Y           &kp U      &kp I         &kp O     &kp P          &kp BSPC
-&mt LCTRL ESC         &kp A       &kp S     &kp D         &kp F           &kp G             &kp H           &kp J      &kp K         &kp L     &kp LS(SEMI)   &kp SQT
-&kp LG(LA(S))         &kp Z       &kp X     &kp C         &kp V           &kp B             &kp N           &kp M      &kp COMMA     &kp DOT   &kp FSLH       &kp LG(LA(K))
-&kp F10               &kp LCTRL   &kp LGUI  &mo NUMBERS   &mt LSHFT DELETE   &lt SYMBOLS RET                   &mt LGUI ENTER  &kp SPACE  &kp RSHFT     &kp RALT  &kp RCTRL
+&kp GRAVE             &kp N1      &kp N2    &kp N3        &kp N4              &kp N5            &kp N6          &kp N7          &kp N8              &kp N9    &kp N0          &to NUMBERS
+&kp TAB               &kp Q       &kp W     &kp E         &kp R               &kp T             &kp Y           &kp U           &kp I               &kp O     &kp P           &kp BSPC
+&mt LCTRL ESC         &kp A       &kp S     &kp D         &kp F               &kp G             &kp H           &kp J           &kp K               &kp L     &kp LS(SEMI)    &kp SINGLE_QUOTE
+&kp LG(LA(S))         &kp Z       &kp X     &kp C         &kp V               &kp B             &kp N           &kp M           &kp COMMA           &kp DOT   &kp SLASH       &kp LG(LA(K))
+&kp F10               &kp LCTRL   &kp LGUI  &mo NUMBERS   &lt BSPC CODING   &kp ENTER                         &mt LGUI ENTER  &tapm RSHFT SPACE   &kp RALT  &to DEFAULT     &kp RCTRL
                                                                &kp LG(V)  &kp RIGHT  &kp UP_ARROW  &kp LEFT  &kp DOWN
             >;
 
             sensor-bindings = <&inc_dec_kp F11 F12>;
         };
 
-        symbols_layer {
-            label = "symbols";
+        coding_layer {
+            display-name = "coding";
 
             // TODO: Some binds are waiting for shifted keycode support.
             // ------------------------------------------------------------------------------------------------------------
@@ -64,11 +85,11 @@
             //               |     |      |      |      |        |  |       |      |       |       |      |
 
             bindings = <
-&studio_unlock     &bt BT_SEL 0     &bt BT_SEL 1     &none &none &none      &none      &none &none &none &none    &none
+&bt BT_CLR     &bt BT_SEL 0     &bt BT_SEL 1     &none &none &none      &none      &none &none &none &none    &none
 &kp GRAVE  &kp LESS_THAN     &kp GREATER_THAN     &kp DOLLAR    &kp AMPERSAND     &kp PERCENT     &kp MINUS               &kp LEFT_BRACE        &kp RIGHT_BRACE         &none       &kp PLUS    &none
-&trans     &kp EXCLAMATION   &kp AT_SIGN          &kp HASH      &kp LA(DELETE)    &kp ASTERISK    &kp EQUAL               &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS   &kp PIPE    &kp SEMI    &kp BACKSLASH
+&trans     &kp EXCLAMATION   &kp AT_SIGN          &kp HASH      &kp LA(BSPC)    &kp ASTERISK    &kp EQUAL               &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS   &kp PIPE    &kp SEMI    &kp BACKSLASH
 &trans     &none              &none               &kp CARET     &kp QUESTION      &none           &kp UNDERSCORE          &kp LEFT_BRACKET      &kp RIGHT_BRACKET       &none       &none       &trans
-&none      &trans     &trans     &trans    &trans    &trans                       &trans          &kp LG(LEFT_BRACKET)    &kp LG(LEFT_BRACKET)  &trans                  &trans
+&none      &trans     &trans     &trans    &trans    &trans                       &trans          &kp LG(LEFT_BRACKET)    &kp LG(RIGHT_BRACKET)  &to DEFAULT                  &trans
                                                                &kp LG(C)  &kp RIGHT  &kp UP_ARROW  &kp LEFT  &kp DOWN
             >;
 
@@ -76,7 +97,7 @@
         };
 
         numbers_layer {
-            label = "numbers";
+            display-name = "numbers";
 
             // ------------------------------------------------------------------------------------------------------------
             // | BTCLR | BT1  | BT2  |  BT3  |  BT4  |  BT5 |                |      |      |       |      |       |       |
@@ -86,7 +107,7 @@
             //                |      |       |       |      |      |  |      |      |      |       |      |
 
             bindings = <
-&none &none &none &none &none &none &none     &none    &none    &none     &none   &to BASE
+&bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &none &none &none &none     &none    &none    &none     &none   &to BASE
 &kp F1      &kp F2       &kp F3     &kp F4        &kp F5        &kp F6  &kp F7    &kp F8    &kp F9     &kp F10   &kp F11 &kp F12
 &trans      &kp N1      &kp N2     &kp N3     &kp N4        &kp N5      &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &kp EQUAL
 &trans      &trans      &trans      &kp LG(LEFT_BRACKET)    &kp LG(RIGHT_BRACKET)   &trans        &trans     &kp LG(LS(LEFT_BRACKET))    &kp LG(LS(RIGHT_BRACKET))   &trans     &trans   &trans
@@ -105,7 +126,8 @@
             // |        |         |         |         |         |         | RGB_TOG | |      |      |      |       |      |       |       |
             //                    |         |         |         |         |         | |      |      |      |       |      |
 
-            label = "extras";
+            display-name = "extras";
+
             bindings = <
 &none &none &none &none &none &none &none  &none  &none  &none  &none  &none
 &none &none &none &none &none &none &none  &none  &none  &none  &none  &none
@@ -114,6 +136,8 @@
 &none &none &none &none &none &none &none  &none  &none  &none  &none
                                                                                                         &kp ENTER  &kp RIGHT_ARROW  &kp UP_ARROW  &kp LEFT_ARROW  &kp DOWN_ARROW
             >;
+
+            sensor-bindings = <&inc_dec_kp PG_UP PG_DN>;
         };
     };
 };
