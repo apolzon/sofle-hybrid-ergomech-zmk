@@ -15,9 +15,6 @@
 #define NUMBERS 2
 #define EXTRAS 3
 
-#define U_WH_U &msc SCRL_UP
-#define U_WH_D &msc SCRL_DOWN
-
 / {
     // Activate ADJUST layer by pressing raise and lower
 
@@ -67,12 +64,6 @@
         flavor = "hold-preferred";
         bindings = <&mo>, <&kp>;
       };
-
-      myscroll: myscroll {
-        compatible = "zmk,behavior-sensor-rotate";
-        #sensor-binding-cells = <0>;
-        bindings = <U_WH_D(20)>, <U_WH_U(20)>;
-      };
     };
 
     keymap {
@@ -97,7 +88,7 @@
                                                                &kp LG(V)  &kp RIGHT  &kp UP_ARROW  &kp LEFT  &kp DOWN
             >;
 
-            sensor-bindings = <&myscroll>;
+            sensor-bindings = <&inc_dec_kp &msc SCRL_DOWN 20, &msc SCRL_UP 20>;
         };
 
         coding_layer {
