@@ -66,13 +66,6 @@
         flavor = "hold-preferred";
         bindings = <&mo>, <&kp>;
       };
-
-      mousescroll: mousescroll {
-        compatible = "zmk,behavior-input-two-axis";
-        #sensor-binding-cells = <0>;
-        tap-ms = <20>;
-        bindings = <&msc(SCRL_DOWN)>, <&msc(SCRL_UP)>;
-      };
     };
 
     keymap {
@@ -97,7 +90,7 @@
                                                                &kp LG(V)  &kp RIGHT  &kp UP_ARROW  &kp LEFT  &kp DOWN
             >;
 
-            sensor-bindings = <&mousescroll>;
+            sensor-bindings = <&msc SCRL_DOWN, &msc SCRL_UP>;
         };
 
         coding_layer {
