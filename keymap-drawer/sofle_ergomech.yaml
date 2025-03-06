@@ -57,7 +57,7 @@ layers:
   - {t: ENTER, h: LGUI}
   - {t: SPACE, h: RSHFT}
   - RALT
-  - {t: default, h: toggle}
+  - {t: coding, h: toggle}
   - RCTRL
   - Gui+V
   - RIGHT
