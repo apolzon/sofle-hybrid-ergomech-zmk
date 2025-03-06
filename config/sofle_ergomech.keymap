@@ -15,7 +15,8 @@
 #define NUMBERS 2
 #define EXTRAS 3
 
-#define ZMK_MOUSE_SCRL_VAL 140
+#define U_WH_U &msc SCRL_UP
+#define U_WH_D &msc SCRL_DOWN
 
 / {
     // Activate ADJUST layer by pressing raise and lower
@@ -90,7 +91,7 @@
                                                                &kp LG(V)  &kp RIGHT  &kp UP_ARROW  &kp LEFT  &kp DOWN
             >;
 
-            sensor-bindings = <&msc SCRL_DOWN, &msc SCRL_UP>;
+            sensor-bindings = <&inc_dec_kp U_WH_D U_WH_U>;
         };
 
         coding_layer {
