@@ -112,7 +112,7 @@
             //               |     |      |      |      |        |  |       |      |       |       |      |
 
             bindings = <
-&bt BT_CLR     &bt BT_SEL 0     &bt BT_SEL 1     &none &none &none      &none      &none &none &none &none    &none
+&trans     &bt BT_SEL 0     &bt BT_SEL 1     &none &none &none      &none      &none &none &none &none    &none
 &kp GRAVE  &kp LESS_THAN     &kp GREATER_THAN     &kp DOLLAR    &kp AMPERSAND     &kp PERCENT     &kp MINUS               &kp LEFT_BRACE        &kp RIGHT_BRACE         &none       &kp PLUS    &none
 &trans     &kp EXCLAMATION   &kp AT_SIGN          &kp HASH      &kp LA(BSPC)    &kp ASTERISK    &kp EQUAL               &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS   &kp PIPE    &kp SEMI    &kp BACKSLASH
 &trans     &none              &none               &kp CARET     &kp QUESTION      &none           &kp UNDERSCORE          &kp LEFT_BRACKET      &kp RIGHT_BRACKET       &none       &none       &trans
