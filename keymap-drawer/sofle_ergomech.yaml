@@ -52,20 +52,20 @@ layers:
   - LCTRL
   - LGUI
   - numbers
-  - {t: DELETE, h: LSHFT}
-  - {t: RET, h: symbols}
+  - {t: BSPC, h: coding}
+  - ENTER
   - {t: ENTER, h: LGUI}
-  - SPACE
-  - RSHFT
+  - {t: SPACE, h: RSHFT}
   - RALT
+  - {t: default, h: toggle}
   - RCTRL
   - Gui+V
   - RIGHT
   - UP ARROW
   - LEFT
   - DOWN
-  symbols:
-  - '&studio_unlock'
+  coding:
+  - BT CLR
   - {t: BT, h: '0'}
   - {t: BT, h: '1'}
   - ''
@@ -93,7 +93,7 @@ layers:
   - '!'
   - '@'
   - '#'
-  - Alt+DELETE
+  - Alt+BSPC
   - '*'
   - '='
   - (
@@ -117,12 +117,12 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
   - {type: held}
   - {t: ▽, type: trans}
-  - Gui+[
-  - Gui+[
   - {t: ▽, type: trans}
+  - Gui+[
+  - Gui+]
+  - {t: default, h: toggle}
   - {t: ▽, type: trans}
   - Gui+C
   - RIGHT
@@ -130,9 +130,9 @@ layers:
   - LEFT
   - DOWN
   numbers:
-  - ''
-  - ''
-  - ''
+  - BT CLR
+  - {t: BT, h: '0'}
+  - {t: BT, h: '1'}
   - ''
   - ''
   - ''
