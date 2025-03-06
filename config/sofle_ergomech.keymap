@@ -66,7 +66,7 @@
 &kp TAB               &kp Q       &kp W     &kp E         &kp R               &kp T             &kp Y           &kp U           &kp I               &kp O     &kp P           &kp BSPC
 &mt LCTRL ESC         &kp A       &kp S     &kp D         &kp F               &kp G             &kp H           &kp J           &kp K               &kp L     &kp LS(SEMI)    &kp SINGLE_QUOTE
 &kp LG(LA(S))         &kp Z       &kp X     &kp C         &kp V               &kp B             &kp N           &kp M           &kp COMMA           &kp DOT   &kp SLASH       &kp LG(LA(K))
-&kp F10               &kp LCTRL   &kp LGUI  &mo NUMBERS   &lt BSPC CODING   &kp ENTER                         &mt LGUI ENTER  &tapm RSHFT SPACE   &kp RALT  &to DEFAULT     &kp RCTRL
+&kp F10               &kp LCTRL   &kp LGUI  &mo NUMBERS   &lt CODING BSPC  &kp ENTER                         &mt LGUI ENTER  &tapm RSHFT SPACE   &kp RALT  &to DEFAULT     &kp RCTRL
                                                                &kp LG(V)  &kp RIGHT  &kp UP_ARROW  &kp LEFT  &kp DOWN
             >;
 
