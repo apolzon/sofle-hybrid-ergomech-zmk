@@ -91,7 +91,7 @@
                                                                &kp LG(V)  &kp RIGHT  &kp UP_ARROW  &kp LEFT  &kp DOWN
             >;
 
-            sensor-bindings = <&inc_dec_kp U_WH_D U_WH_U>;
+            sensor-bindings = <U_WH_D U_WH_U>;
         };
 
         coding_layer {
