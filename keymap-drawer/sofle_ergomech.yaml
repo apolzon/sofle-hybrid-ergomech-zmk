@@ -52,8 +52,8 @@ layers:
   - LCTRL
   - LGUI
   - numbers
-  - {t: BSPC, h: coding}
-  - ENTER
+  - {t: BSPC, h: '1'}
+  - {t: ENTER, h: LGUI}
   - {t: ENTER, h: LGUI}
   - {t: SPACE, h: RSHFT}
   - RALT
@@ -117,7 +117,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {type: held}
+  - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - Gui+[
